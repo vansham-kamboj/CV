@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gesture Volume Control</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hand Gesture Volume Control</h1>
+        <button id="startBtn">Start Camera</button>
+        <div class="video-container" id="videoBox" style="display:none;">
+            <img id="videoFeed" src="" alt="Video Stream">
+        </div>
+        <div class="volume-bar">
+            <label>System Volume</label>
+            <progress id="volumeLevel" max="100" value="0"></progress>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const videoBox = document.getElementById("videoBox");
+        const videoFeed = document.getElementById("videoFeed");
+
+        startBtn.addEventListener("click", () => {
+            videoFeed.src = "/video_feed";
+            videoBox.style.display = "block";
+            startBtn.style.display = "none";
+        });
+
+        // Optional: simulate volume level update (for UI only)
+        setInterval(() => {
+            const bar = document.getElementById("volumeLevel");
+            bar.value = Math.floor(Math.random() * 100); // You can link actual value later via socket
+        }, 1000);
+    </script>
+</body>
+</html>
